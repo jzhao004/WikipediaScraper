@@ -12,9 +12,10 @@ Adapted from https://github.com/goldsmith/Wikipedia and https://github.com/marti
 >>> wiki.search("Wikipedia", limit=3)
 # ['Wikipedia', 'English Wikipedia', 'List of Wikipedias']
 
+# Extract plain text for given page
 >>> page = wiki.page("Wikipedia")
 
-# Get page summary
+# Get summary
 >>> page.summary(exsentences=1)
 # 'Wikipedia is a multilingual free online encyclopedia written and maintained by a community of volunteers, known as Wikipedians, through open collaboration and using a wiki-based editing system called MediaWiki.'
 
