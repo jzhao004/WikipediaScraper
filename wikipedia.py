@@ -74,7 +74,7 @@ class Wikipedia:
 
         if not page.exists():
             raise Exception('Wikipedia page does not exists')
-
+    
         return page
 
     def extracts(self, page):
@@ -105,6 +105,27 @@ class Wikipedia:
 
             return self._build_extracts(v, page)
 
+    def coordinates(self, title):
+        params = {
+            'action': 'query',
+            'format':'json',
+            'titles': title,
+            'prop':'coordinates'            
+        }
+
+        res = self._query(params)
+
+        if 'error' in res:
+            raise Exception(res['error']['info'])
+        
+        try:
+            pages = res['query']['pages']
+            for key in pages:
+                coordinates = pages[key]['coordinates'][0]
+                return coordinates['lat'], coordinates['lon']
+        except:
+            return None, None
+           
     def _query(self, params):
         """ 
         Queries Wikipedia API to fetch content 
