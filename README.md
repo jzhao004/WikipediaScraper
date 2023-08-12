@@ -12,6 +12,10 @@ Adapted from https://github.com/goldsmith/Wikipedia and https://github.com/marti
 >>> wiki.search("Wikipedia", limit=3)
 # ['Wikipedia', 'English Wikipedia', 'List of Wikipedias']
 
+# Get location coordinates if exists 
+>>> wiki.coordinates("Wikipedia")
+# (None, None)
+
 # Extract plain text for given page
 >>> page = wiki.page("Wikipedia")
 
